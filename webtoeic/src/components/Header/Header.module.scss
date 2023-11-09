@@ -1,0 +1,20 @@
+.logoLeft {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+
+  img {
+    width: 115px;
+    height: auto;
+  }
+
+  .logoText {
+    margin-left: 10px;
+
+    .textDanger {
+      color: red;
+    }
+  }
+}
