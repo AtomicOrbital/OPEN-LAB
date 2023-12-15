@@ -65,16 +65,35 @@ const IoT: React.FC = () => {
             console.log("Prepared data:", data);
 
             if (editingId) {
-                dispatch(updateBaiIoT({ id: String(editingId), data }));
+                dispatch(updateBaiIoT({ id: String(editingId), data }))
+                    .then(() => {
+                        notification.success({
+                            message: 'Success',
+                            description: 'Updated Sucessfully'
+                        });
+                    }).catch(() => {
+                        notification.error({
+                            message: 'Error',
+                            description: 'Error Failed Update Exercise'
+                        })
+                    })
             } else {
-                dispatch(createBaiIoT(data));
+                dispatch(createBaiIoT(data))
+                    .then(() => {
+                        notification.success({
+                            message: 'Success',
+                            description: 'Created Sucessfully'
+                        });
+                    }).catch(() => {
+                        notification.error({
+                            message: 'Error',
+                            description: 'Error Failed Create Exercise'
+                        })
+                    })
             }
             setIsModalVisible(false);
             form.resetFields();
-            notification.success({
-                message: 'Success',
-                description: 'Created Sucessfully'
-            });
+
         } else {
             if (!imageFile) {
                 console.log("Image file is missing or not structured correctly");

@@ -29,6 +29,7 @@ import PeripheralBlock from './pages/Home/IoTPage/IoTNodePage/PeripheralBlock/Pe
 import DetailPeripheralBlockPage from './pages/Home/IoTPage/IoTNodePage/PeripheralBlock/DetailPeripheralBlockPage/DetailPeripheralBlockPage';
 import ChatComponent from './components/BoxChat/ChatComponent';
 import FirebaseAuthGuard from './components/FirebaseAuthGuard';
+import PracticeSourceBlock from './pages/Home/IoTPage/IoTNodePage/SourceBlock/DetailSourceBlockPage/PracticeSourceBlock';
 
 
 const root = ReactDOM.createRoot(
@@ -49,6 +50,7 @@ root.render(
         <Route path="/home/IoT/Node" element={<AuthGuard><IoTNodePage /></AuthGuard>}></Route>
         <Route path="/home/IoT/Node/source_block" element={<AuthGuard><SourceBlock /></AuthGuard>}></Route>
         <Route path="/home/IoT/Node/source_block/detailKhoiNguon" element={<AuthGuard><DetailSourceBlockPage /></AuthGuard>}></Route>
+        <Route path="/home/IoT/Node/source_block/detailKhoiNguon/practiceSourceBlock" element={<AuthGuard><PracticeSourceBlock /></AuthGuard>}></Route>
 
         <Route path="/home/IoT/Node/sensor_block" element={<AuthGuard><SensorBlock /></AuthGuard>}></Route>
         <Route path="/home/IoT/Node/sensor_block/detailKhoiCamBien" element={<AuthGuard><DetailSensorBlockPage /></AuthGuard>}></Route>

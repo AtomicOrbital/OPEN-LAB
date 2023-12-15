@@ -63,16 +63,38 @@ const SensorBlock: React.FC = () => {
             console.log("Prepared data:", data);
 
             if (editingId) {
-                dispatch(updateBaiCamBien({ id: String(editingId), data }));
+                dispatch(updateBaiCamBien({ id: String(editingId), data }))
+                    .then(() => {
+                        notification.success({
+                            message: 'Success',
+                            description: 'Updated Sucessfully'
+                        });
+                    }).catch(() => {
+                        notification.error({
+                            message: 'Error',
+                            description: 'Error Failed Update Exercise'
+                        })
+                    });
             } else {
-                dispatch(createBaiKhoiCamBien(data));
+                dispatch(createBaiKhoiCamBien(data))
+                    .then(() => {
+                        notification.success({
+                            message: 'Success',
+                            description: 'Created Sucessfully'
+                        });
+                    }).catch(() => {
+                        notification.error({
+                            message: 'Error',
+                            description: 'Error Failed Update Exercise'
+                        })
+                    });
             }
             setIsModalVisible(false);
             form.resetFields();
-            notification.success({
-                message: 'Success',
-                description: 'Created Sucessfully'
-            });
+            // notification.success({
+            //     message: 'Success',
+            //     description: 'Created Sucessfully'
+            // });
         } else {
             if (!imageFile) {
                 console.log("Image file is missing or not structured correctly");

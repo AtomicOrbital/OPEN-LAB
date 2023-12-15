@@ -104,6 +104,7 @@ const DetailSensorBlockPage = () => {
                             isOpen={modalOpen}
                             onClose={closeModal}
                         />
+                        <Button className='mt-2'>Vào làm bài</Button>
                     </div>
                 </div>
             </div>

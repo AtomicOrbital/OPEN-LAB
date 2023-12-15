@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import Header from '../../../../../../components/Header/Header'
-import { useLocation } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { DispatchType, RootState } from '../../../../../../redux/configStore'
 import { fetchBaiIoTDetail } from '../../../../../../redux/BaiIoT/BaiIoTReducer'
@@ -108,6 +108,9 @@ const DetailSourceBlockPage = () => {
                             isOpen={modalOpen}
                             onClose={closeModal}
                         />
+                        <NavLink to="/home/IoT/Node/source_block/detailKhoiNguon/practiceSourceBlock" className='mt-2'>
+                            <Button className='mt-3'>Vào làm bài</Button>
+                        </NavLink>
                     </div>
                 </div>
 

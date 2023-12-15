@@ -47,7 +47,7 @@ const initialState: AuthState = {
     loading: false,
     error: "",
     userId: userLoginData && userLoginData.userId ? Number(userLoginData.userId) : null,
-    email: localStorage.getItem('email'),
+    email: userLoginData && userLoginData.email,
     firebaseToken: ""
 };
 
