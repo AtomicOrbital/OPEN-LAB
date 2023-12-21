@@ -15,7 +15,8 @@ export interface AuthState {
     error: string | null | undefined;
     userId: number | null;
     email: string | null;
-    firebaseToken: string;
+    firebaseToken: string | null;
+    role: string | null;
 }
 
 export interface LoginResponse {
@@ -48,7 +49,8 @@ const initialState: AuthState = {
     error: "",
     userId: userLoginData && userLoginData.userId ? Number(userLoginData.userId) : null,
     email: userLoginData && userLoginData.email,
-    firebaseToken: ""
+    firebaseToken: "",
+    role: userLoginData && userLoginData.role
 };
 
 export const loginUser = createAsyncThunk<LoginResponse, LoginRequestPayload, { rejectValue: RejectedValue }>(
@@ -83,7 +85,26 @@ export const loginUser = createAsyncThunk<LoginResponse, LoginRequestPayload, { 
 const userReducer = createSlice({
     name: 'auth',
     initialState,
-    reducers: {},
+    reducers: {
+        // Thêm action logout
+        logout: (state: AuthState) => {
+            // Xóa thông tin người dùng khỏi state
+            state.token = null;
+            state.isAuthenticated = false;
+            state.userId = null;
+            state.email = null;
+            state.firebaseToken = null;
+            state.role = null;
+            // Xóa token và thông tin người dùng khỏi local storage
+            localStorage.removeItem('token');
+            settings.clearStorage(ACCESS_TOKEN);
+            settings.clearStorage(FIREBASE_TOKEN);
+            settings.clearStorage(USER_LOGIN);
+            window.location.reload();
+            // Thêm các bước khác nếu cần
+            history.push("/login");
+        }
+    },
     extraReducers: (builder) => {
         builder.addCase(loginUser.pending, (state) => {
             state.loading = true;
@@ -122,4 +143,6 @@ const userReducer = createSlice({
 
     },
 });
+
+export const { logout } = userReducer.actions;
 export default userReducer.reducer;
