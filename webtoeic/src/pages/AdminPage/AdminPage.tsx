@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { MenuFoldOutlined, MenuUnfoldOutlined, UploadOutlined, UserOutlined, VideoCameraOutlined, WifiOutlined } from '@ant-design/icons';
-import { Button, Layout, Menu, theme } from 'antd';
+import { DownOutlined, MenuFoldOutlined, MenuUnfoldOutlined, UploadOutlined, UserOutlined, VideoCameraOutlined, WifiOutlined } from '@ant-design/icons';
+import { Button, Dropdown, Layout, Menu, Space, theme } from 'antd';
 import IoT from './IoT';
 import AI from './AI';
 import FiveG from './5G';
@@ -10,6 +10,13 @@ import ControllerBlockAdmin from './ControllerBlockAdmin';
 import PeripheralBlockAdmin from './PeripheralBlockAdmin';
 import VideoBaiGrammar from './VideoBaiGrammar';
 import UploadFileVideo from './UploadFileVideo';
+import styles from './Header.module.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import { DispatchType, RootState } from '../../redux/configStore';
+import { NavLink } from 'react-router-dom';
+import { logout } from '../../redux/UserReducer/UserReducer';
+import UserManage from './UserManage';
+
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -19,7 +26,7 @@ const AdminPage: React.FC = () => {
     } = theme.useToken();
     const [collapsed, setCollapsed] = useState(false);
     const [selectedContent, setSelectedContent] = useState('');
-
+    const dispatch: DispatchType = useDispatch();
     const handleMenuClick = (item: any) => {
         switch (item.key) {
             case "KhoiNguon":
@@ -51,8 +58,28 @@ const AdminPage: React.FC = () => {
         PeripheralBlock: <PeripheralBlockAdmin />,
         AI: <AI />,
         '5G': <FiveG />,
-        UploadVideo: <UploadFileVideo />
+        UploadVideo: <UploadFileVideo />,
+        ManageUser: <UserManage />
     }
+
+    const email = useSelector((state: RootState) => state.UserReducer.email);
+    const handLogout = () => {
+        dispatch(logout());
+    }
+    const menu = (
+        <Menu>
+            <Menu.Item key="home">
+                <NavLink to="/home" className="text-decoration-none" >Trang Home</NavLink>
+            </Menu.Item>
+            <Menu.Item key="chat">
+                <NavLink to="/boxchat" className="text-decoration-none">Box Chat</NavLink>
+            </Menu.Item>
+            <Menu.Item key="logout" onClick={handLogout}>
+                <span className="text-decoration-none">Đăng xuất</span>
+            </Menu.Item>
+        </Menu>
+    );
+
     return (
         <Layout>
             <Sider
@@ -83,12 +110,22 @@ const AdminPage: React.FC = () => {
                     <Menu.Item key="UploadVideo" icon={<UploadOutlined />}>
                         Upload Video
                     </Menu.Item>
+                    <Menu.Item key="ManageUser" icon={<UserOutlined />}>
+                        Quản lý sinh viên
+                    </Menu.Item>
                 </Menu>
 
 
             </Sider>
             <Layout>
-                <Header style={{ padding: 0, background: colorBgContainer }}>
+                <Header
+                    style={{
+                        padding: 0,
+                        background: colorBgContainer,
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center'
+                    }}>
                     <Button
                         type="text"
                         icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
@@ -99,6 +136,16 @@ const AdminPage: React.FC = () => {
                             height: 64,
                         }}
                     />
+
+                    <Dropdown overlay={menu}>
+                        <a className="ant-dropdown-link" onClick={(e) => e.preventDefault()}>
+                            <Space>
+                                {email}
+                                <DownOutlined />
+                            </Space>
+                        </a>
+                    </Dropdown>
+
                 </Header>
                 {/* <Header style={{ padding: 0, background: colorBgContainer }} /> */}
                 <Content style={{ margin: '24px 16px 0' }}>

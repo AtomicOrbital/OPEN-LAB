@@ -29,7 +29,11 @@ export const Login: React.FC<Props> = () => {
             email: email,
             password: password
         }
+
+
+
         dispatch(loginUser(loginData)).then((action: any) => {
+
             if (action.payload.status === 200) {
                 //Dang nhap thanh cong xac thuc firebase
                 authenticateWithFirebase(action.payload.firebaseToken).then(() => {
@@ -37,7 +41,9 @@ export const Login: React.FC<Props> = () => {
                         message: 'Thành công',
                         description: 'Đăng nhập thành công!'
                     });
+
                 })
+
             } else {
                 notification.error({
                     message: 'Lỗi',

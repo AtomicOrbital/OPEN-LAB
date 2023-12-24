@@ -226,7 +226,7 @@ const ControllerBlockAdmin: React.FC = () => {
                             maxCount={1}
                             beforeUpload={(file: UploadFile) => {
                                 // mô phỏng việc upload, không thực sự gửi file lên server
-                                console.log("File được chọn:", file);
+                                // console.log("File được chọn:", file);
                                 return false; // Trả về false để ngăn chặn việc gửi yêu cầu HTTP
                             }}
                         >

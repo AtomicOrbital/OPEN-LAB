@@ -17,6 +17,7 @@ export interface AuthState {
     email: string | null;
     firebaseToken: string | null;
     role: string | null;
+    users: User[];
 }
 
 export interface LoginResponse {
@@ -40,6 +41,19 @@ export interface RejectedValue {
     message: string;
 }
 
+export interface ApiResponse {
+    status: number;
+    message: string;
+    data: User;
+}
+
+export interface User {
+    id: number;
+    email: string;
+    password: string;
+    vaiTro: number;
+}
+
 const userLoginData = settings.getStorageJson(USER_LOGIN);
 
 const initialState: AuthState = {
@@ -50,7 +64,8 @@ const initialState: AuthState = {
     userId: userLoginData && userLoginData.userId ? Number(userLoginData.userId) : null,
     email: userLoginData && userLoginData.email,
     firebaseToken: "",
-    role: userLoginData && userLoginData.role
+    role: userLoginData && userLoginData.role,
+    users: []
 };
 
 export const loginUser = createAsyncThunk<LoginResponse, LoginRequestPayload, { rejectValue: RejectedValue }>(
@@ -78,9 +93,58 @@ export const loginUser = createAsyncThunk<LoginResponse, LoginRequestPayload, { 
     }
 );
 
+export const addUser = createAsyncThunk<ApiResponse, User, { rejectValue: string }>(
+    'auth/addUser',
+    async (userData, thunkAPI) => {
+        try {
+            const response = await http.post<ApiResponse>('/auth/register', userData);
+            return response.data;
+        } catch (error: any) {
+            return thunkAPI.rejectWithValue(error.message);
+        }
+    }
+);
 
+export const editUser = createAsyncThunk<ApiResponse, { userId: number, userData: User }, { rejectValue: string }>(
+    'auth/editUser',
+    async ({ userId, userData }, thunkAPI) => {
+        try {
+            const params = new URLSearchParams();
+            params.append('email', userData.email);
+            params.append('password', userData.password);
+            params.append('vaiTro', userData.vaiTro.toString());
 
+            const response = await http.put<ApiResponse>(`/auth/${userId}`, params);
+            return response.data;
+        } catch (error: any) {
+            return thunkAPI.rejectWithValue(error.message);
+        }
+    }
+);
 
+export const getAllUsers = createAsyncThunk<ApiResponse, void, { rejectValue: string }>(
+    'auth/getAllUsers',
+    async (_, thunkAPI) => {
+        try {
+            const response = await http.get<ApiResponse>('/auth');
+            return response.data;
+        } catch (error: any) {
+            return thunkAPI.rejectWithValue(error.message);
+        }
+    }
+);
+
+export const deleteUser = createAsyncThunk<ApiResponse, number, { rejectValue: ApiResponse }>(
+    'auth/deleteUser',
+    async (userId, thunkAPI) => {
+        try {
+            const response = await http.delete(`/auth/${userId}`);
+            return response.data;
+        } catch (error: any) {
+            return thunkAPI.rejectWithValue(error.message);
+        }
+    }
+);
 
 const userReducer = createSlice({
     name: 'auth',
@@ -97,6 +161,7 @@ const userReducer = createSlice({
             state.role = null;
             // Xóa token và thông tin người dùng khỏi local storage
             localStorage.removeItem('token');
+            localStorage.removeItem('firebaseToken');
             settings.clearStorage(ACCESS_TOKEN);
             settings.clearStorage(FIREBASE_TOKEN);
             settings.clearStorage(USER_LOGIN);
@@ -130,6 +195,7 @@ const userReducer = createSlice({
                 firebaseToken: action.payload.firebaseToken
             });
             history.push("/home");
+
         });
 
         builder.addCase(loginUser.rejected, (state, action) => {
@@ -141,6 +207,30 @@ const userReducer = createSlice({
             }
         });
 
+        builder.addCase(addUser.fulfilled, (state, action: PayloadAction<ApiResponse>) => {
+            state.users.push(action.payload.data);
+        });
+        builder.addCase(editUser.fulfilled, (state, action: PayloadAction<ApiResponse>) => {
+            const index = state.users.findIndex(user => user.id === action.payload.data.id);
+            if (index !== -1) {
+                state.users[index] = action.payload.data;
+            }
+            state.loading = false;
+        });
+
+        builder.addCase(getAllUsers.fulfilled, (state, action: PayloadAction<ApiResponse>) => {
+            if (Array.isArray(action.payload.data)) {
+                state.users = action.payload.data;
+            }
+        })
+        builder.addCase(deleteUser.fulfilled, (state, action: PayloadAction<ApiResponse>) => {
+            console.log("action", action.payload);
+            const index = state.users.findIndex(user => user.id === action.payload.data.id);
+            if (index !== -1) {
+                state.users.splice(index, 1);
+            }
+            // state.loading = false;
+        });
     },
 });
 

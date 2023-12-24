@@ -11,16 +11,19 @@ import { logout } from '../../redux/UserReducer/UserReducer';
 const Header: React.FC = () => {
     const role = useSelector((state: RootState) => state.UserReducer.role);
     const email = useSelector((state: RootState) => state.UserReducer.email);
+    console.log("role", role);
     const dispatch: DispatchType = useDispatch();
     // const [showDropdown, setShowDropdown] = useState(false);
 
     // const toggleDropdown = () => setShowDropdown(!showDropdown);
 
     const handlAdminClick = () => {
-        if (role !== 'ROLE_ADMIN') {
+
+        if (role !== "ROLE_ADMIN") {
             message.error('Bạn không có quyền truy cập trang này');
             return;
         }
+
         history.push("/admin");
     }
 
