@@ -140,7 +140,7 @@ const VideoModal: React.FC<VideoModalProps> = ({ videos, isOpen, onClose }) => {
                             width="100%"
                             height="100%"
                             controls
-                            src={`http://localhost:8081/api/upload/video/${currentVideo}`}
+                            src={`http://34.66.113.99:8001/api/upload/video/${currentVideo}`}
                         />
                     )}
                 </div>

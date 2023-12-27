@@ -351,7 +351,7 @@ const VideoBaiDieuKhien: React.FC = () => {
             </Modal>
             <Modal title="Video Player" open={isModalVisible} onCancel={handleCancel} footer={null} width={720}>
                 <video key={selectedVideoPath} width="100%" controls>
-                    <source src={`http://localhost:8081/api/upload/video/${selectedVideoPath}`} type="video/mp4" />
+                    <source src={`http://34.66.113.99:8001/api/upload/video/${selectedVideoPath}`} type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
             </Modal>
