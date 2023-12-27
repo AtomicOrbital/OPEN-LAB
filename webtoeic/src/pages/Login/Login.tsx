@@ -64,8 +64,8 @@ export const Login: React.FC<Props> = () => {
     return (
         <Fragment>
             <div className="text-center text-danger">
-                <h1>HỌC VIỆN CÔNG NGHỆ BƯU CHÍNH VIỄN THÔNG</h1>
-                <h1>KHOA VIỄN THÔNG I</h1>
+                <h1>Thiết kế website hỗ trợ thực hành cho sinh viên chuyên ngành IoT</h1>
+                <h1>Họ và tên: Nguyễn Thành Đạt</h1>
             </div>
             <div className={styles.mainContainer}>
                 <div className={styles.contentCenter}>

@@ -8,6 +8,7 @@ import { RootState } from '../../../../../../redux/configStore';
 import { Button } from 'antd';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import EvaluationForm from './EvaluateForm';
 
 type GasData = {
     time: string;
@@ -116,7 +117,9 @@ const PracticeSourceBlock = () => {
                     alignItems: 'center'
                 }}>
                 <h3 className='text-center mb-4'>Họ và tên: <span className='text-danger'>{userName}</span></h3>
-                <Line style={{ width: '100%' }} {...config} />
+                <Line style={{ width: '100%', marginBottom: '50px' }} {...config} />
+
+                <EvaluationForm />
                 <Button
                     onClick={exportPDF}
                     className='text-center'
@@ -128,6 +131,8 @@ const PracticeSourceBlock = () => {
                     Nộp bài
                 </Button>
             </div>
+
+
         </Fragment>
     );
 };

@@ -7,6 +7,7 @@ import { debounce } from 'lodash';
 import { useNavigate } from 'react-router-dom';
 import { fetchAllBaiKhoiDieuKhien, searchBaiKhoiDieuKhien } from '../../../../../redux/ControllerBlockReducer/ControllerBlockReducer';
 import { fetchAllBaiKhoiNgoaiVi, searchBaiKhoiNgoaiVi } from '../../../../../redux/PeripheralBlockReducer/PeripheralBlockReducer';
+import Footer from '../../../../../components/Footer/Footer';
 
 const PeripheralBlock = () => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -118,6 +119,7 @@ const PeripheralBlock = () => {
                     />
                 </div>
             </div >
+            <Footer />
         </Fragment >
     );
 }

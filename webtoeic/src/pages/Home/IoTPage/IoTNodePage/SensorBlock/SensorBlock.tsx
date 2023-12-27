@@ -7,6 +7,7 @@ import { fetchAllBaiIoT, fetchBaiIoTPaginated, searchBaiIoT } from '../../../../
 import { debounce } from 'lodash';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { fetchAllBaiKhoiCamBien, searchBaiKhoiCamBien } from '../../../../../redux/SensorBlockReducer/SensorBlockReducer';
+import Footer from '../../../../../components/Footer/Footer';
 
 export interface SourceBlock {
     data: [];
@@ -122,7 +123,7 @@ const SensorBlock = () => {
                     />
                 </div>
             </div >
-
+            <Footer />
         </Fragment >
     );
 }

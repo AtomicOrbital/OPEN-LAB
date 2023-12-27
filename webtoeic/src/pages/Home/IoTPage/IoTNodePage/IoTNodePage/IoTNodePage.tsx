@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import Header from '../../../../../components/Header/Header';
 import styles from './IoTNodePage.module.scss';
 import { NavLink } from 'react-router-dom';
+import Footer from '../../../../../components/Footer/Footer';
 
 type Props = {}
 
@@ -22,6 +23,7 @@ const IoTNodePage = (props: Props) => {
                         <img className={styles.image} src={require('../../../../../assets/img/IoTNode.png')} alt="IoT Node Image" />
                     </div>
                 </div>
+                <Footer />
             </div>
         </Fragment>
     )

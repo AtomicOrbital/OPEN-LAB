@@ -6,6 +6,7 @@ import { DispatchType, RootState } from '../../../../../redux/configStore';
 import { debounce } from 'lodash';
 import { useNavigate } from 'react-router-dom';
 import { fetchAllBaiKhoiDieuKhien, searchBaiKhoiDieuKhien } from '../../../../../redux/ControllerBlockReducer/ControllerBlockReducer';
+import Footer from '../../../../../components/Footer/Footer';
 
 const ControllerBlock = () => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -117,6 +118,7 @@ const ControllerBlock = () => {
                     />
                 </div>
             </div >
+            <Footer />
         </Fragment >
     );
 }

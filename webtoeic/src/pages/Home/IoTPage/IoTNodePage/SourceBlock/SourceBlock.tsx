@@ -6,6 +6,7 @@ import { DispatchType, RootState } from '../../../../../redux/configStore';
 import { fetchAllBaiIoT, fetchBaiIoTPaginated, searchBaiIoT } from '../../../../../redux/BaiIoT/BaiIoTReducer';
 import { debounce } from 'lodash';
 import { NavLink, useNavigate } from 'react-router-dom';
+import Footer from '../../../../../components/Footer/Footer';
 
 export interface SourceBlock {
     data: [];
@@ -120,8 +121,9 @@ const SourceBlock = () => {
                         onChange={(page) => setCurrentPage(page)}
                     />
                 </div>
-            </div >
 
+            </div >
+            <Footer />
         </Fragment >
     );
 }

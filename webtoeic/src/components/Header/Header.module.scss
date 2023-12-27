@@ -1,62 +1,85 @@
-.logoLeft {
-  position: absolute;
-  top: 0;
-  left: 0;
+.headerContainer {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  .topRow {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    .logoLeft {
+      flex-grow: 1;
+      display: flex;
+      align-items: start;
+      img {
+        width: 220px;
+        height: auto;
+      }
 
-  img {
-    width: 115px;
-    height: auto;
-  }
-
-  .logoText {
-    margin-left: 10px;
-
-    .textDanger {
-      color: red;
-    }
-  }
-}
-
-.logoRight {
-  position: absolute;
-  top: 0;
-  right: 0;
-  display: flex;
-  align-items: center;
-  padding: 10px;
-
-  .dropdownButton {
-    cursor: pointer;
-    background-color: #f0f0f0;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 5px;
-    font-size: 16px;
-    transition: background-color 0.3s;
-
-    &:hover {
-      background-color: #e6e6e6;
-    }
-  }
-
-  .dropdownMenu {
-    position: absolute;
-    right: 10px;
-    top: 40px;
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-
-    p {
-      padding: 10px 20px;
-      margin: 0;
-      &:hover {
-        background-color: #f5f5f5;
+      .logoText {
+        margin-left: 10px;
+        font-size: x-large;
+        .textDanger {
+          color: red;
+        }
       }
     }
+
+    .logoRight {
+      margin-bottom: 80px;
+      .ant-dropdown-link {
+        display: flex;
+        align-items: center;
+        color: #000;
+        text-decoration: none;
+
+        &:hover {
+          color: red;
+        }
+      }
+    }
+  }
+
+  .navigation {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    a {
+      font-size: 1.2em;
+      color: #000;
+      text-decoration: none;
+      padding: 5px 10px;
+      margin: 0 10px;
+      position: relative;
+
+      &::after {
+        content: "";
+        display: block;
+        width: 0;
+        height: 3px;
+        background-color: red;
+        position: absolute;
+        bottom: -3px;
+        left: 50%;
+        transform: translateX(-50%);
+        transition: width 0.3s ease-in-out;
+      }
+
+      &:hover::after {
+        width: 100%;
+        left: 0;
+        transform: translateX(0%);
+      }
+    }
+  }
+
+  .redLine {
+    height: 3.5px;
+    background-color: red;
+    width: 100%;
+    margin-top: 10px;
   }
 }
