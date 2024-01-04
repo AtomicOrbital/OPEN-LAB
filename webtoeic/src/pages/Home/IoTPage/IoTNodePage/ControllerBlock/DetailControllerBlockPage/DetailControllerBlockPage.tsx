@@ -8,6 +8,7 @@ import { fetchBaiKhoiDieuKhienDetail } from '../../../../../../redux/ControllerB
 import { fetchVideoByBaiDieuKhienId } from '../../../../../../redux/VideoDieuKhien/VideoDieuKhienReducer'
 import { Button } from 'antd'
 import VideoDieuKhienModal from './VideoDieuKhienModal'
+import styles from '../../Detail.module.scss'
 
 export interface DetailSourceBlockPage {
     id: number | null;
@@ -85,7 +86,7 @@ const DetailControllerBlockPage = () => {
     return (
         <Fragment>
             <Header />
-            <div className="container" style={{ marginTop: '120px' }}>
+            <div className={styles.container} style={{ marginTop: '120px' }}>
                 <div className="row">
                     <div className="col-10">
                         {currentItem && (

@@ -11,7 +11,7 @@ import { fetchBaiKhoiNgoaiViDetail } from '../../../../../../redux/PeripheralBlo
 import { Button } from 'antd'
 import { fetchVideoByBaiNgoaiViId } from '../../../../../../redux/VideoBaiNgoaiViReducer/VideoBaiNgoaiViReducer'
 import VideoNgoaiViModal from './VideoNgoaiViModal'
-
+import styles from '../../Detail.module.scss'
 export interface DetailSourceBlockPage {
     id: number | null;
 }
@@ -88,7 +88,7 @@ const DetailPeripheralBlockPage = () => {
     return (
         <Fragment>
             <Header />
-            <div className="container" style={{ marginTop: '120px' }}>
+            <div className={styles.container} style={{ marginTop: '120px' }}>
                 <div className="row">
                     <div className="col-10">
                         {currentItem && (

@@ -124,6 +124,8 @@ http.interceptors.response.use((response) => {
     return Promise.reject(error);
 })
 
+export const DOMAIN_VIDEO = "http://34.66.113.99:8001";
+
 
 
 

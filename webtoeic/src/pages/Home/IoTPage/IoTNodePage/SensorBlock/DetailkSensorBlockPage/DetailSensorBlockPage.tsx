@@ -8,6 +8,7 @@ import { CommentCamBien, addCommentCamBien, fetchCommentsCamBien } from '../../.
 import { Button } from 'antd'
 import { fetchVideoByBaiCamBienId } from '../../../../../../redux/VideoCamBien/VideoCamBienReducer'
 import VideoCamBienModal from './VideoCamBienModal'
+import styles from '../../Detail.module.scss'
 
 export interface DetailSourceBlockPage {
     id: number | null;
@@ -87,7 +88,7 @@ const DetailSensorBlockPage = () => {
     return (
         <Fragment>
             <Header />
-            <div className="container" style={{ marginTop: '120px' }}>
+            <div className={styles.container} style={{ marginTop: '120px' }}>
                 <div className="row">
                     <div className="col-10">
                         {currentItem && (

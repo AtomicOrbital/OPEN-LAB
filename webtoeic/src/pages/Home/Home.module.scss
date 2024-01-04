@@ -17,14 +17,13 @@
   .contentSection {
     display: flex;
     align-items: center;
-    // margin-bottom: 5px;
 
     .contentText {
       flex: 1.5;
       font-weight: bold;
 
       a {
-        margin-bottom: 3px;
+        // margin-bottom: 3px;
         font-size: 1.5rem;
         color: rgb(233, 63, 63);
         text-decoration: none;
@@ -39,5 +38,56 @@
         height: auto;
       }
     }
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: center;
+
+      .contentText,
+      .contentImage {
+        flex: none;
+        width: 100%;
+        text-align: center;
+
+        a {
+          display: block;
+          margin-bottom: 5px;
+          font-size: 1.2rem;
+        }
+
+        img {
+          width: 80%;
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .container {
+    margin-top: 180px;
+  }
+}
+
+@media (max-width: 992px) {
+  .container {
+    margin-top: 160px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    margin-top: 350px;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .container {
+    // margin-top: 350px;
+    display: flex;
+    // justify-content: center;
   }
 }

@@ -9,6 +9,7 @@ import { settings } from '../../../../../../util/config'
 import { GrammarWithVideoResponse, fetchVideoByBaiGrammarId } from '../../../../../../redux/VideoGrammar/VideoGrammarReducer'
 import { Button } from 'antd'
 import VideoGammarModal from './VideoGammarModal'
+import styles from '../../Detail.module.scss';
 
 export interface DetailSourceBlockPage {
     id: number | null;
@@ -91,7 +92,7 @@ const DetailSourceBlockPage = () => {
     return (
         <Fragment>
             <Header />
-            <div className="container" style={{ marginTop: '120px' }}>
+            <div className={styles.container} style={{ marginTop: '120px' }}>
                 <div className="row">
                     <div className="col-10">
                         {currentItem && (
@@ -157,7 +158,13 @@ const DetailSourceBlockPage = () => {
                             <button
                                 onClick={handleSubmitComment}
                                 className="btn text-white"
-                                style={{ backgroundColor: '#3B82F6', width: '150px', borderRadius: '0.5rem' }}>Submit comment</button>
+                                style={{
+                                    backgroundColor: '#3B82F6',
+                                    width: '150px',
+                                    borderRadius: '0.5rem'
+                                }}>
+                                Submit comment
+                            </button>
                         </div>
                     </div>
                 </div>

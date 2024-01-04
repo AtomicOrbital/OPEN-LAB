@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { DispatchType, RootState } from '../../redux/configStore';
 import { Button, Collapse, Modal, Input, List, Upload, Form, message, Progress, notification, Popconfirm, UploadFile } from 'antd';
 import { DeleteOutlined, EditOutlined, UploadOutlined } from '@ant-design/icons';
-import { http } from '../../util/config';
+import { DOMAIN_VIDEO, http } from '../../util/config';
 import styles from './VideoBaiGrammar.module.scss';
 import { NgoaiViWithVideoResponse, VideoBaiNgoaiViResponse, addVideoToNgoaiVi, deleteVideoFromNgoaiVi, fetchAllNgoaiViWithVideo, updateVideoInNgoaiVi } from '../../redux/VideoBaiNgoaiViReducer/VideoBaiNgoaiViReducer';
 
@@ -351,7 +351,7 @@ const VideoBaiNgoaiVi: React.FC = () => {
             </Modal>
             <Modal title="Video Player" open={isModalVisible} onCancel={handleCancel} footer={null} width={720}>
                 <video key={selectedVideoPath} width="100%" controls>
-                    <source src={`http://34.66.113.99:8001/api/upload/video/${selectedVideoPath}`} type="video/mp4" />
+                    <source src={`${DOMAIN_VIDEO}/api/upload/video/${selectedVideoPath}`} type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
             </Modal>

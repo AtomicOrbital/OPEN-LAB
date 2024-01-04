@@ -89,5 +89,51 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @media (max-width: 768px) {
+      font-size: 20px;
+    }
+
+    @media (max-width: 576px) {
+      font-size: 16px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .mainContainer {
+    .logoContainer {
+      flex-direction: column;
+      align-items: center;
+
+      .logoLeft,
+      .logoRight {
+        margin: 0 0 20px 0;
+        display: none;
+      }
+    }
+
+    .loginContainer {
+      width: 90%;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .mainContainer {
+    .logoContainer {
+      .logoLeft,
+      .logoRight {
+        img {
+          height: 15vh;
+        }
+      }
+    }
+
+    .loginContainer {
+      form {
+        width: 100%;
+      }
+    }
   }
 }

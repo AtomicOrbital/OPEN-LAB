@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Modal } from 'antd';
 import styles from './VideoModal.module.scss'
+import { DOMAIN_VIDEO } from '../../../../../../util/config';
 
 interface Video {
     id: number;
@@ -140,7 +141,7 @@ const VideoModal: React.FC<VideoModalProps> = ({ videos, isOpen, onClose }) => {
                             width="100%"
                             height="100%"
                             controls
-                            src={`http://34.66.113.99:8001/api/upload/video/${currentVideo}`}
+                            src={`${DOMAIN_VIDEO}/api/upload/video/${currentVideo}`}
                         />
                     )}
                 </div>
