@@ -56,8 +56,8 @@ const AdminPage: React.FC = () => {
         SensorBlock: <SensorBlock />,
         ControllerBlock: <ControllerBlockAdmin />,
         PeripheralBlock: <PeripheralBlockAdmin />,
-        AI: <AI />,
-        '5G': <FiveG />,
+        // AI: <AI />,
+        // '5G': <FiveG />,
         UploadVideo: <UploadFileVideo />,
         ManageUser: <UserManage />
     }
@@ -69,10 +69,10 @@ const AdminPage: React.FC = () => {
     const menu = (
         <Menu>
             <Menu.Item key="home">
-                <NavLink to="/home" className="text-decoration-none" >Trang Home</NavLink>
+                <NavLink to="/home/IoT" className="text-decoration-none" >Trang Home</NavLink>
             </Menu.Item>
             <Menu.Item key="chat">
-                <NavLink to="/boxchat" className="text-decoration-none">Box Chat</NavLink>
+                <NavLink to="/boxchat" className="text-decoration-none">Trợ giảng lab</NavLink>
             </Menu.Item>
             <Menu.Item key="logout" onClick={handLogout}>
                 <span className="text-decoration-none">Đăng xuất</span>
@@ -101,12 +101,12 @@ const AdminPage: React.FC = () => {
                         <Menu.Item key="KhoiDieuKhien">Khối điều khiển</Menu.Item>
                         <Menu.Item key="KhoiNgoaiVi">Khối ngoại vi</Menu.Item>
                     </SubMenu>
-                    <Menu.Item key="AI" icon={<VideoCameraOutlined />}>
+                    {/* <Menu.Item key="AI" icon={<VideoCameraOutlined />}>
                         AI
-                    </Menu.Item>
-                    <Menu.Item key="5G" icon={<WifiOutlined />}>
+                    </Menu.Item> */}
+                    {/* <Menu.Item key="5G" icon={<WifiOutlined />}>
                         5G
-                    </Menu.Item>
+                    </Menu.Item> */}
                     <Menu.Item key="UploadVideo" icon={<UploadOutlined />}>
                         Upload Video
                     </Menu.Item>

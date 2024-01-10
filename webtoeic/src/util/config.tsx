@@ -1,7 +1,7 @@
 import axios from "axios";
 import { createBrowserHistory } from "history";
 
-
+export const DOMAIN_VIDEO = "http://localhost:8081";
 export const DOMAIN = "http://localhost:8081";
 export const history = createBrowserHistory();
 
@@ -124,7 +124,7 @@ http.interceptors.response.use((response) => {
     return Promise.reject(error);
 })
 
-export const DOMAIN_VIDEO = "http://34.66.113.99:8001";
+
 
 
 

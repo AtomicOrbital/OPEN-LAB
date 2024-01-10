@@ -91,14 +91,13 @@ const PracticeSourceBlock = () => {
     const exportPDF = () => {
         const container = document.querySelector('.container') as HTMLElement;
         if (container) {
-            html2canvas(container).then((canvas) => {
+            html2canvas(container, { scrollY: -window.scrollY }).then((canvas) => {
                 const imgData = canvas.toDataURL('image/png');
                 const pdf = new jsPDF();
                 const imgProps = pdf.getImageProperties(imgData);
                 const pdfWidth = pdf.internal.pageSize.getWidth();
                 const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
                 pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-
                 pdf.save('download.pdf');
             });
         } else {
@@ -106,6 +105,7 @@ const PracticeSourceBlock = () => {
         }
     };
 
+    const currentItem = useSelector((state: RootState) => state.BaiIoTReducer.currentItem);
     return (
         <Fragment>
             <Header />
@@ -116,7 +116,7 @@ const PracticeSourceBlock = () => {
                     flexDirection: 'column',
                     alignItems: 'center'
                 }}>
-                <h3 className='text-center mb-4'>Họ và tên: <span className='text-danger'>{userName}</span></h3>
+                <h3 className='text-center mb-4'><span className='text-danger'>{currentItem?.tenBaiGrammar}</span></h3>
                 <Line style={{ width: '100%', marginBottom: '50px' }} {...config} />
 
                 <EvaluationForm />

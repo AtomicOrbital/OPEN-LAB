@@ -194,7 +194,7 @@ const userReducer = createSlice({
                 email: action.payload.email,
                 firebaseToken: action.payload.firebaseToken
             });
-            history.push("/home");
+            history.push("/home/IoT");
 
         });
 

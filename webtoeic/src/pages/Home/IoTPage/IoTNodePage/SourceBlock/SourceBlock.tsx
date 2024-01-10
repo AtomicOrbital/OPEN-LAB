@@ -69,7 +69,7 @@ const SourceBlock = () => {
             <div className="container" style={{ marginTop: '150px' }}>
                 <Row gutter={16}>
                     <Col span={18}>
-                        <h4 className='text-center'>DANH SÁCH BÀI THỰC HÀNH IoT</h4>
+                        <h4 className='text-center'>NỘI DUNG THỰC HÀNH LỚP THIẾT BỊ</h4>
                         <List
                             itemLayout="horizontal"
                             dataSource={Array.isArray(itemsToDisplay) ? itemsToDisplay : []}

@@ -112,6 +112,9 @@ const DetailSourceBlockPage = () => {
                         <NavLink to="/home/IoT/Node/source_block/detailKhoiNguon/practiceSourceBlock" className='mt-2'>
                             <Button className='mt-3'>Vào làm bài</Button>
                         </NavLink>
+                        <NavLink to="/boxchat" target='_blank' className='mt-2'>
+                            <Button className='mt-3'>Trợ giảng lab</Button>
+                        </NavLink>
                     </div>
                 </div>
 

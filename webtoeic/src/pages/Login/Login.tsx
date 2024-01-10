@@ -65,7 +65,7 @@ export const Login: React.FC<Props> = () => {
         <Fragment>
             <div className="text-center text-danger">
                 <h1>Thiết kế website hỗ trợ thực hành cho sinh viên chuyên ngành IoT</h1>
-                <h1>Họ và tên: Nguyễn Thành Đạt</h1>
+                <h1>Nguyễn Thành Đạt - B19DCVT081</h1>
             </div>
             <div className={styles.mainContainer}>
                 <div className={styles.contentCenter}>
@@ -74,13 +74,13 @@ export const Login: React.FC<Props> = () => {
                             <img src={require('../../assets/img/f1d0d614e2c636986fd7.jpg')} alt="logo_left" />
                         </div>
                         <div className={styles.loginContainer}>
-                            <h2>OPEN LAB</h2>
+                            {/* <h2>OPEN LAB</h2> */}
                             <form onSubmit={handlSubmit}>
                                 <div className="mb-4">
                                     <label>User:</label>
                                     <input
                                         className="form-control"
-                                        type="email"
+                                        type="text"
                                         value={email}
                                         onChange={(e) => {
                                             setEmail(e.target.value)
@@ -118,7 +118,7 @@ export const Login: React.FC<Props> = () => {
                     alignItems: 'center',
                     justifyContent: 'center',
                 }} className={styles.footerContainer}>
-                    THỰC HÀNH CHUYÊN SÂU IoT/AI/5G
+                    THỰC HÀNH CHUYÊN SÂU IoT
                 </div>
             </div>
 
